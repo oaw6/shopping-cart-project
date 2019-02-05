@@ -24,21 +24,24 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-# TODO: write some Python code here to produce the desired functionality...
-
 #Variable set-up section
 cart_product = 0
-#product_list = []
-product_list = [2, 12, 6, 16, 6]
+product_list = []
+#product_list = [2, 12, 6, 16, 6] Test List
 final_list = []
 pretax_total = 0.00
 
+#Introduction to Program
+print("Welcome to the Bag-It-Up Grocery check-out interface. Please follow the directions below:")
+print("-----------------------------------------------------------------------------------------")
+
 #User inputs id numbers for products in their shopping cart
-#while cart_product != "null":
-#    cart_product = input("Please type the item identification number of one of your products. After you have finished, type 'DONE': ")
-#    if cart_product == "DONE":
-#        break
-#    product_list.append(int(cart_product))
+while cart_product != "null":
+    cart_product = input("Please type the item identification number of one of your products. After you have finished, type 'DONE': ")
+    if cart_product == "DONE":
+        print("Thank you! Your receipt will appear below.")
+        break
+    product_list.append(int(cart_product))
 print("The items in your cart have the following identification numbers:", product_list)
 
 #Product Lookup Loop
@@ -47,22 +50,28 @@ for product_id in product_list:
     if product_id_match != []:
         final_list.append(product_id_match)
 
-#Receipt Creation
-print("--------------------------------------------------")
+#Receipt Creation and Calculations
+print("-------------------------------------------------------")
+print("-------------------------------------------------------")
+print("-------------------------------------------------------")
 print("Owen's Bag-It-Up Grocery")
-print("--------------------------------------------------")
+print("-------------------------------------------------------")
 print("Website: http://www.bagitup.com")
 print("Phone: 202-555-1789")
-print("Time of Purchase:", datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-print("--------------------------------------------------")
+print("Date and Time of Purchase:", datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+print("-------------------------------------------------------")
 print("Items Purchased:")
 for purchased_product in final_list:
     print("+  " + str(purchased_product[0]["name"]) + "..... $" + str("%0.2f" % purchased_product[0]["price"]))
     pretax_total = pretax_total + purchased_product[0]["price"]
-print("--------------------------------------------------")
+print("-------------------------------------------------------")
 print("Cart Subtotal..... $" + str("%0.2f" % pretax_total))
-taxes = pretax_total * 0.08875
+taxes = pretax_total * 0.08875                                  #Tax Calculation
 print("+  Sales Tax (8.875%)..... $" + str("%0.2f" % taxes))
-final_total = pretax_total + taxes
+final_total = pretax_total + taxes                              #Total Calculation
 print("Total..... $" + str("%0.2f" % final_total))
-print("--------------------------------------------------")
+print("-------------------------------------------------------")
+print("Thank you for shopping with us!")
+print("-------------------------------------------------------")
+print("-------------------------------------------------------")
+print("-------------------------------------------------------")
