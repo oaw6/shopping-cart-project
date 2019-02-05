@@ -1,4 +1,5 @@
 # shopping_cart.py
+import datetime
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -25,6 +26,7 @@ products = [
 
 # TODO: write some Python code here to produce the desired functionality...
 
+#Variable set-up section
 cart_product = 0
 #product_list = []
 product_list = [2, 12, 6, 16, 6]
@@ -38,9 +40,21 @@ final_list = []
 #    product_list.append(int(cart_product))
 print("The items in your cart have the following identification numbers:", product_list)
 
+#Product Lookup Loop
 for product_id in product_list:
     product_id_match = [product for product in products if product["id"] == product_id]
     if product_id_match != []:
         final_list.append(product_id_match)
 
-print(final_list)
+#Receipt Creation
+print("--------------------------------------------------")
+print("Owen's Bag-It-Up Grocery")
+print("--------------------------------------------------")
+print("Website: http://www.bagitup.com")
+print("Phone: 202-555-1789")
+print("Time of Purchase:", datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+print("--------------------------------------------------")
+print("Items Purchased:")
+for purchased_product in final_list:
+    print("+  " + str(purchased_product[0]["name"]) + "..... $" + str("%0.2f" % purchased_product[0]["price"]))
+print("--------------------------------------------------")
