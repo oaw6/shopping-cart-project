@@ -26,13 +26,21 @@ products = [
 # TODO: write some Python code here to produce the desired functionality...
 
 cart_product = 0
-product_list = []
+#product_list = []
+product_list = [2, 12, 6, 16, 6]
+final_list = []
 
-while cart_product != "null":
-    cart_product = input("Please type the item identification number of one of your products. After you have finished, type 'DONE': ")
-    if cart_product == "DONE":
-        break
-    product_list.append(int(cart_product))
-print("The items in your cart have the following identification numbers: " + "".join(str(product_list)))
+#User inputs id numbers for products in their shopping cart
+#while cart_product != "null":
+#    cart_product = input("Please type the item identification number of one of your products. After you have finished, type 'DONE': ")
+#    if cart_product == "DONE":
+#        break
+#    product_list.append(int(cart_product))
+print("The items in your cart have the following identification numbers:", product_list)
 
-#print(products)
+for product_id in product_list:
+    product_id_match = [product for product in products if product["id"] == product_id]
+    if product_id_match != []:
+        final_list.append(product_id_match)
+
+print(final_list)
