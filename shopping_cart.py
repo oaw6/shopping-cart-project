@@ -24,4 +24,15 @@ products = [
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
 # TODO: write some Python code here to produce the desired functionality...
-print(products)
+
+cart_product = 0
+product_list = []
+
+while cart_product != "null":
+    cart_product = input("Please type the item identification number of one of your products. After you have finished, type 'DONE': ")
+    if cart_product == "DONE":
+        break
+    product_list.append(int(cart_product))
+print("The items in your cart have the following identification numbers: " + "".join(str(product_list)))
+
+#print(products)
