@@ -31,6 +31,7 @@ cart_product = 0
 #product_list = []
 product_list = [2, 12, 6, 16, 6]
 final_list = []
+pretax_total = 0.00
 
 #User inputs id numbers for products in their shopping cart
 #while cart_product != "null":
@@ -57,4 +58,11 @@ print("--------------------------------------------------")
 print("Items Purchased:")
 for purchased_product in final_list:
     print("+  " + str(purchased_product[0]["name"]) + "..... $" + str("%0.2f" % purchased_product[0]["price"]))
+    pretax_total = pretax_total + purchased_product[0]["price"]
+print("--------------------------------------------------")
+print("Cart Subtotal..... $" + str("%0.2f" % pretax_total))
+taxes = pretax_total * 0.08875
+print("+  Sales Tax (8.875%)..... $" + str("%0.2f" % taxes))
+final_total = pretax_total + taxes
+print("Total..... $" + str("%0.2f" % final_total))
 print("--------------------------------------------------")
