@@ -52,7 +52,11 @@ for product_id in product_list:
 
 #Convert float values to USD format
 def to_usd(price_float):
-    return "$" + str("%0.2f" % price_float)
+    return "${0:,.2f}".format(price_float)
+
+#Convert datetime objects to strings
+def human_friendly_string(datetime_object):
+    return datetime_object.strftime("%Y/%m/%d at %H:%M:%S")
 
 #Receipt Creation and Calculations
 print("-------------------------------------------------------")
@@ -62,7 +66,8 @@ print("Owen's Bag-It-Up Grocery")
 print("-------------------------------------------------------")
 print("Website: http://www.bagitup.com")
 print("Phone: 202-555-1789")
-print("Date and Time of Purchase:", datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+#print("Date and Time of Purchase:", datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+print("Date and Time of Purchase:", human_friendly_string(datetime.datetime.now()))
 print("-------------------------------------------------------")
 print("Items Purchased:")
 for purchased_product in final_list:
