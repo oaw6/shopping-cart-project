@@ -50,6 +50,10 @@ for product_id in product_list:
     if product_id_match != []:
         final_list.append(product_id_match)
 
+#Convert float values to USD format
+def to_usd(price_float):
+    return "$" + str("%0.2f" % price_float)
+
 #Receipt Creation and Calculations
 print("-------------------------------------------------------")
 print("-------------------------------------------------------")
@@ -62,14 +66,18 @@ print("Date and Time of Purchase:", datetime.datetime.now().strftime("%Y-%m-%d %
 print("-------------------------------------------------------")
 print("Items Purchased:")
 for purchased_product in final_list:
-    print("+  " + str(purchased_product[0]["name"]) + "..... $" + str("%0.2f" % purchased_product[0]["price"]))
+    #print("+  " + str(purchased_product[0]["name"]) + "..... $" + str("%0.2f" % purchased_product[0]["price"]))
+    print("+  " + str(purchased_product[0]["name"]) + "..... " + to_usd(purchased_product[0]["price"]))
     pretax_total = pretax_total + purchased_product[0]["price"]
 print("-------------------------------------------------------")
-print("Cart Subtotal..... $" + str("%0.2f" % pretax_total))
+#print("Cart Subtotal..... $" + str("%0.2f" % pretax_total))
+print("Cart Subtotal..... " + to_usd(pretax_total))
 taxes = pretax_total * 0.08875                                  #Tax Calculation
-print("+  Sales Tax (8.875%)..... $" + str("%0.2f" % taxes))
+#print("+  Sales Tax (8.875%)..... $" + str("%0.2f" % taxes))
+print("+  Sales Tax (8.875%)..... " + to_usd(taxes))
 final_total = pretax_total + taxes                              #Total Calculation
-print("Total..... $" + str("%0.2f" % final_total))
+#print("Total..... $" + str("%0.2f" % final_total))
+print("Total..... " + to_usd(final_total))
 print("-------------------------------------------------------")
 print("Thank you for shopping with us!")
 print("-------------------------------------------------------")
